@@ -4,14 +4,19 @@ var path = require('path');
 
 var indexRouter = require('./routes/index');
 var booksRouter = require('./routes/books');
+const authorsRouter = require('./routes/authors');
+const { connectDatabase } = require('./database');
 
 var app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+connectDatabase();
+
 app.use('/', indexRouter);
 app.use('/books', booksRouter);
+app.use('/authors', authorsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

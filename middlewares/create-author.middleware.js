@@ -1,12 +1,10 @@
 const Joi = require('joi');
 
-const DATE_YYYY_MM_DD_FORMAT = /^\d{4}-\d{2}-\d{2}$/;
-
-function createBookMiddleware(req, res, next) {
+function createAuthorMiddleware(req, res, next) {
     const schema = Joi.object({
         id: Joi.number().integer(),
-        title: Joi.string().required(),
-        authorId: Joi.string().required(),
+        name: Joi.string().required(),
+        address: Joi.string().required(),
     });
    
     const { error, value } = schema.validate(req.body);
@@ -21,4 +19,4 @@ function createBookMiddleware(req, res, next) {
 }
 
 
-module.exports = createBookMiddleware;
+module.exports = createAuthorMiddleware;
