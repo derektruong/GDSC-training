@@ -10,7 +10,25 @@ const getAuthorById = async (id) => {
 	return author;
 }
 
+const createAuthor = async (body) => {
+  const author = await AuthorRepository.createAuthor(body);
+  return author;
+}
+
+const updateAuthorById = async (id, body) => {
+  await AuthorRepository.updateAuthorById(id, body);
+  return;
+}
+
+const deleteAuthorById = async (id) => {
+  await AuthorRepository.deleteAuthorById(id);
+  return;
+}
+
 module.exports = {
   getAllAuthors,
   getAuthorById,
+  createAuthor,
+  updateAuthorById,
+  deleteAuthorById,
 };

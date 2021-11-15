@@ -21,7 +21,7 @@ const getAuthorById = async (req, res) => {
 const createAuthor = async (req, res) => {
   try {
     const author = await AuthorService.createAuthor(req.body);
-    res.status(200).send(author);
+    res.status(200).send('created author successfully');
   } catch (e) {
     res.status(500).send(e);
   }
@@ -29,11 +29,11 @@ const createAuthor = async (req, res) => {
 
 const updateAuthorById = async (req, res) => {
   try {
-    const author = await AuthorService.updateAuthorById(
+    await AuthorService.updateAuthorById(
       req.params.id,
       req.body
     );
-    res.status(200).send(author);
+    res.status(200).send('updated author successfully');
   } catch (e) {
     res.status(500).send(e);
   }
@@ -41,8 +41,8 @@ const updateAuthorById = async (req, res) => {
 
 const deleteAuthorById = async (req, res) => {
   try {
-    const author = await AuthorService.deleteAuthorById(req.params.id);
-    res.status(200).send(author);
+    await AuthorService.deleteAuthorById(req.params.id);
+    res.status(200).send('deleted author successfully');
   } catch (e) {
     res.status(500).send(e);
   }

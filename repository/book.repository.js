@@ -26,7 +26,16 @@ async function createBook(book) {
   }
 }
 
+const deleteBooksByAuthorId = async (authorId) => {
+  try {
+    return connection('books').where('author_id', authorId).del();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   findBooks,
   createBook,
+  deleteBooksByAuthorId
 };
